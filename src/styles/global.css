@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-@font-face { font-family: Bricolage; src: url('/fonts/bricolage-display.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
-@font-face { font-family: 'Source Sans 3'; src: url('/fonts/source-sans-3-regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Source Sans 3'; src: url('/fonts/source-sans-3-semibold.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: Bricolage; src: url('../fonts/bricolage-display.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Source Sans 3'; src: url('../fonts/source-sans-3-regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Source Sans 3'; src: url('../fonts/source-sans-3-semibold.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
 
 @theme {
   --color-night: #070910;

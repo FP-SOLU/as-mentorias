@@ -8,5 +8,5 @@ export default [
   ...tseslint.configs.recommended.map((config) => ({ ...config, files: ['**/*.ts'] })),
   ...astro.configs.recommended,
   { files: ['**/*.astro'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
-  { files: ['scripts/**/*.mjs'], languageOptions: { globals: { process: 'readonly' } } },
+  { files: ['scripts/**/*.mjs', 'astro.config.mjs'], languageOptions: { globals: { process: 'readonly' } } },
 ];

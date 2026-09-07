@@ -1,6 +1,6 @@
-@font-face { font-family: Bricolage; src: url('/fonts/bricolage-display.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
-@font-face { font-family: 'Source Sans 3'; src: url('/fonts/source-sans-3-regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Source Sans 3'; src: url('/fonts/source-sans-3-semibold.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: Bricolage; src: url('../fonts/bricolage-display.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Source Sans 3'; src: url('../fonts/source-sans-3-regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Source Sans 3'; src: url('../fonts/source-sans-3-semibold.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
 :root { --night: #070910; --paper: #f4efe2; --mineral: #e4dcc8; --ink: #070910; --muted: #50576a; --reverse: #f4efe2; --reverse-muted: #d5cfbf; --gold: #f3d386; --gutter: clamp(1.25rem, 5vw, 5rem); font-family: 'Source Sans 3', 'Segoe UI', sans-serif; color: var(--ink); background: var(--paper); line-height: 1.5; font-synthesis: none; scrollbar-color: var(--night) var(--paper); }
 *, *::before, *::after { box-sizing: border-box; }
 body, p, h1, h2, h3, figure { margin: 0; }
