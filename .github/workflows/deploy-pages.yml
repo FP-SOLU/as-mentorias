@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DEPLOY_SITE: https://fpsolu.github.io
+      DEPLOY_SITE: https://fp-solu.github.io
       DEPLOY_BASE: /as-mentorias
     steps:
       - uses: actions/checkout@v4
