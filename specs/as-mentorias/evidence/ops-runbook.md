@@ -16,7 +16,7 @@ Preparação operacional **exclusivamente local** do site estático Astro (demo 
 ```powershell
 npm run build   # node scripts/astro.mjs build
 ```
-**Esperado:** `[build] Complete!` e `dist/` contendo `index.html`, `_astro/*` (9× `.webp` otimizados, 2× `.js`, 1× `.css` único) e `fonts/`.
+**Esperado:** `[build] Complete!` e `dist/` contendo `index.html`, `_astro/*` (9× `.webp` otimizados, 2× `.js`, 1× `.css` único e 3× `.woff2` bundlados com hash — fonts não vão mais para `dist/fonts/`).
 **Se falhar:** ver §6 Troubleshooting.
 
 ## 4. Preview local (loopback apenas)
@@ -51,7 +51,7 @@ Confirmar no conteúdo:
 |---|---|---|
 | Preview falha ao iniciar | 4321 ocupada (strictPort) | Identificar PID via `Get-NetTCPConnection -LocalPort 4321`, encerrar dono legítimo, reexecutar |
 | Mudança não aparece | Cache do build | Apagar/reexecutar `npm run build` antes do preview |
-| Fontes 404 | `public/fonts` ausente/incompleto | Verificar `public/fonts/` e `dist/fonts/`; rebuild |
+| Fontes 404 | `src/fonts/` ausente/incompleto (fonts são bundladas, não mais `public/`) | Verificar `src/fonts/*.woff2` e refs `url('../fonts/...')` em `global.css`; rebuild |
 | Imagens webp faltando | Cache de otimização corrompido | `npm run build` limpo (remover `dist/` e cache de assets se necessário) |
 
 ## 8. Restrições duras
@@ -68,3 +68,21 @@ Confirmar no conteúdo:
 | 2026-09-06 18:37 | `npm run preview` (job pwsh-12) | Listener apenas `127.0.0.1:4321` (pid 15176) |
 | 2026-09-06 18:37 | Health checks | HTTP 200; title "AS Mentorias — conceito FP Solutions"; 4 âncoras OK; `id="contact-info"` OK; robots `noindex, nofollow` OK; 1 CSS; 0 refs externas; 0 binds `0.0.0.0` |
 | 2026-09-06 18:37 | `job_kill pwsh-12` | Porta 4321 livre confirmada |
+
+## 10. Apêndice — Deploy GitHub Pages (D1a, autorizado pelo operador)
+
+**Destino:** Pages do repo `Kamilyszg/as-mentorias` (público — exigência do plano free). URL final: **https://kamilyszg.github.io/as-mentorias/**
+
+**O que o workflow (`.github/workflows/deploy-pages.yml`) faz:**
+1. Trigger: push em `main` ou `workflow_dispatch`.
+2. Build com env `DEPLOY_SITE=https://kamilyszg.github.io` e `DEPLOY_BASE=/as-mentorias` — `astro.config.mjs` só aplica `site`/`base` quando essas vars existem.
+3. `actions/configure-pages@v5` com `enablement: true` (ativa o Pages no repo sem ação manual na UI).
+4. Upload de `dist/` como artifact Pages + `actions/deploy-pages@v4`.
+
+**Re-deploy:** `git push` na `main`, ou rodar o workflow manualmente (Actions → "Deploy to GitHub Pages" → Run workflow).
+
+**Preview local intacto:** sem as env vars, `base`/`site` ficam `undefined` → `npm run dev`/`preview` continuam servindo na raiz (`http://127.0.0.1:4321/`). Verificado em D1a: build local sem prefixo; build com env gera `url(/as-mentorias/_astro/*.woff2)` (3 refs) e assets HTML prefixados (12 refs).
+
+**Nota fonts:** `public/fonts/` → `src/fonts/` + CSS relativo (`url('../fonts/...')`) porque assets de `public/` com URL absoluta **não** recebem o prefixo `base` no Pages (quirk conhecido Astro).
+
+**Status D1a:** repo remoto **não criado** — token MCP GitHub sem escopo para `POST /user/repos` (403). Workflow escrito com owner `kamilyszg` (conta confirmada pelo operador), a confirmar quando o repo existir.
