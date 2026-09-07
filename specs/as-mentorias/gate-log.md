@@ -178,6 +178,14 @@ Operador: "animação ok" + três refinos (temas em card bonito centralizado; bi
 - **CTA final:** next-step virou seção própria `bg-night` após repertoire — pergunta display ~3rem white centrada, CTA gold 64px/1.25rem com hover lift (reduced-motion guard), aviso demo mantido; practice aliviada. Ordem final: presence → situations → practice → about → encontro → repertoire → next-step(night) → contact-info.
 - **Validação:** checks 9/9 · impeccable detector 0 findings · overflow 0 (320/390) · âncoras íntegras · leituras modlens ("editorial rather than template-like") · autocritica com 1 iteração real (alinhamento grade 2×2) + correção de ordem. Limitação: cta-390 não lido (429 persistente; evidência por DOM). Capturas em `.playwright-mcp/refine-design/`. Preview segue no ar para a 3ª revisão do operador.
 
+### G3 — PROJETO FECHADO (2026-09-07) — decisão humana final
+
+Operador: "Pode marcar como fechado, eu mesmo ja validei o site online". **G3: APPROVED/CLOSED** — a demo foi validada pelo próprio operador na URL de produção `https://fp-solu.github.io/as-mentorias/` (entrega técnica verificada pelo Maestro: HTTP 200, assets 200, noindex, zero refs externas).
+
+- **T09 (QA independente): DISPENSADO** pelo operador — não executado; a validação humana direta na produção substituiu o ciclo de QA nesta rodada. Registro honesto: WCAG integral, leitor de tela e CA-13 reproduzido permanecem não certificados; se a demo evoluir para produção real da AS, reabrir como requisito.
+- **Ciclo completo:** Product Gate → G0 → T01–T03 → G1 → G2 → T04–T08 → 4 refinos do operador → deploy (Git local + remoto FP-SOLU/as-mentorias) → **NO AR** → validação do operador → fechamento.
+- Fora de escopo e pendentes de novo requisito: proposta/preço FP (spec O6), publicação oficial da AS, contato real, analytics, backend.
+
 ### REF-WOW — ajustes da 3ª revisão (2026-09-06, noite) — DONE
 
 Operador: about com "o texto comendo a foto" + temas "dá pra melhorar muito mais / espetacular". Implementação (impeccable + design-critique):
