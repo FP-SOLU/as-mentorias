@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import DemoLayout from '../layouts/DemoLayout.astro';
+import sculpture from '../assets/cerebro-final.png';
+import amandaXadrez from '../assets/amanda-xadrez.jpg';
+import ContactAction from '../components/ContactAction.astro';
+---
+<DemoLayout title="AS Mentorias — conceito FP Solutions">
+  <section class="presence" aria-labelledby="titulo">
+    <h1 id="titulo" class="relative z-[1] font-display font-semibold">Clareza para expor<br class="desktop-break hidden lg:inline" /> ideias e se posicionar<br class="desktop-break hidden lg:inline" /> <span class="text-gold">no trabalho.</span></h1>
+    <div class="sculpture" aria-hidden="true">
+      <Image src={sculpture} alt="" widths={[480, 780, 1100, 1448]} sizes="(min-width: 1100px) 1100px, (min-width: 600px) 100vw, 120vw" format="webp" quality={85} loading="eager" class="block w-full h-auto opacity-[.68] motion-reduce:transform-none!" />
+    </div>
+    <div class="presence-field">
+      <div class="presence-action lg:justify-self-end lg:w-full">
+        <p class="text-lg sm:text-xl leading-[1.45]">Comunicação, liderança e carreira com Amanda Schurnovski. Conheça sua atuação e os temas que conectam a fala, a escuta e o posicionamento profissional.</p>
+        <ContactAction origin="hero" />
+        <a class="text-link inline-flex items-center min-h-11 pt-2 pb-2" href="#atuacao">Conhecer a atuação</a>
+      </div>
+    </div>
+  </section>
+  <section class="situations px-gutter py-12 sm:py-20 sm:pb-22" aria-labelledby="situacoes">
+    <div class="items-start gap-8 lg:gap-20 sm:grid sm:grid-cols-[1fr_1.2fr]">
+      <h2 id="situacoes" tabindex="-1" class="font-display font-semibold text-[1.75rem] leading-[1.15] mb-4 sm:mb-0 sm:text-[2rem] sm:max-w-[12ch]">Situações de trabalho</h2>
+      <p class="text-lg sm:text-[1.375rem] max-w-[46ch] lg:justify-self-end lg:w-full">Ao apresentar uma ideia, assumir novas responsabilidades ou conversar com a equipe, o que você diz e como escuta faz parte do seu trabalho.</p>
+    </div>
+    <div class="open-space" aria-hidden="true"><span></span><span></span></div>
+    <ul class="situations-lines">
+      <li>Apresentar uma ideia.</li>
+      <li>Assumir novas responsabilidades.</li>
+      <li>Conversar com a equipe.</li>
+    </ul>
+  </section>
+  <section class="practice bg-mineral px-gutter py-12 sm:pt-[4.5rem] sm:pb-14 block sm:grid sm:grid-cols-2 gap-x-20 gap-y-10 sm:max-lg:gap-8" aria-labelledby="atuacao">
+    <h2 id="atuacao" tabindex="-1" class="text-[2.375rem] tracking-[-0.025em] leading-[1.08] sm:text-[clamp(2.5rem,4.6vw,4.5rem)]">Fala, escuta e<br /> posicionamento.</h2>
+    <div class="practice-copy mt-6 sm:mt-0 text-lg sm:text-xl max-w-[48ch] lg:justify-self-end lg:w-full">
+      <p>Posicionamento, presença na fala e escuta ativa são o campo que pode ser explorado com a AS. Comunicação, liderança e carreira: clareza ao expor ideias, escuta e posicionamento no trabalho.</p>
+      <p class="provenance text-base mt-6">Posicionamento, presença na fala e escuta ativa são temas da divulgação do workshop “Destravando sua Liderança e Oratória”. Uma iniciativa divulgada pela AS, não uma oferta ativa nesta demonstração.</p>
+    </div>
+  </section>
+  <section class="about bg-paper px-gutter py-12 sm:py-20" aria-labelledby="amanda">
+    <h2 id="amanda" tabindex="-1" class="about-name font-display font-semibold">Amanda Schurnovski</h2>
+    <div class="about-grid grid gap-10 sm:grid-cols-[minmax(300px,420px)_1fr] gap-x-16 items-start">
+      <Image src={amandaXadrez} alt="Amanda Schurnovski, mentora de comunicação, liderança e carreira" widths={[480, 780, 1100]} sizes="(min-width: 600px) 420px, 90vw" format="webp" quality={82} loading="lazy" class="about-portrait w-full h-auto" />
+      <div class="about-copy">
+        <p class="about-lead text-xl sm:text-2xl leading-[1.4] max-w-[46ch]">Mentora de comunicação, liderança e carreira, Amanda ajuda profissionais a vencerem o medo do julgamento e a usarem a voz para ocupar os lugares que sempre desejaram.</p>
+        <p class="text-base sm:text-lg max-w-[54ch] mt-6">Formada em Letras e Educação Física, com pós-graduações em Ensino de Línguas e em Neuropsicopedagogia, sua jornada começou em mais de 13 anos de sala de aula.</p>
+        <p class="text-base sm:text-lg max-w-[54ch] mt-4">Hoje, como fundadora da AS Mentorias, escritora e colunista, ela ensina profissionais a se comunicarem com elegância, clareza e autoridade. Guiada pela filosofia de que, quando a sua voz muda, a sua vida acompanha.</p>
+        <p class="provenance text-base text-muted mt-6">Conforme site oficial da AS.</p>
+        <ul class="about-badges">
+          <li>Membro · Sociedade Brasileira de PNL</li>
+          <li>Colunista · Revista A Cúpula</li>
+          <li>Escritora</li>
+          <li>+13 anos em sala de aula</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="encontro" tabindex="-1" class="encontro bg-mineral px-gutter py-12 sm:py-20" aria-labelledby="encontro-titulo">
+    <h2 id="encontro-titulo" tabindex="-1" class="w-fit text-[1.75rem] leading-[1.2] sm:text-[2rem] font-display font-semibold mb-8 sm:mb-10">O encontro</h2>
+    <div class="grid gap-8 lg:gap-16 sm:grid-cols-[1.2fr_1fr] items-start">
+      <div>
+        <p class="text-lg sm:text-xl max-w-[46ch]">O encontro é conduzido por Amanda Schurnovski, fundadora da AS Mentorias.</p>
+        <p class="text-base sm:text-lg max-w-[52ch] mt-6">Apresenta posicionamento, presença na fala e escuta ativa: temas da divulgação do workshop “Destravando sua Liderança e Oratória”.</p>
+        <p class="provenance text-base text-muted mt-6">Temas conforme divulgação oficial da AS. Uma iniciativa divulgada pela AS, não uma oferta ativa nesta demonstração.</p>
+      </div>
+      <p class="text-[clamp(2rem,3.7vw,3.5rem)] leading-[1.15] tracking-[-0.025em] font-display font-semibold max-w-[14ch] lg:justify-self-end">Quando a sua voz muda, a sua vida acompanha.</p>
+    </div>
+  </section>
+  <section id="temas" tabindex="-1" class="repertoire bg-paper px-gutter pt-12 pb-16 sm:pt-20 sm:pb-28" aria-labelledby="temas-titulo">
+    <div class="repertoire-card mx-auto max-w-[56rem] border border-muted bg-paper px-7 pt-12 pb-11 sm:px-14 sm:pt-16 sm:pb-14 lg:px-20 lg:pt-20 lg:pb-16">
+      <div class="flex flex-col items-center text-center">
+        <h2 id="temas-titulo" tabindex="-1" class="repertoire-heading font-display font-semibold">Temas</h2>
+        <span class="repertoire-rule" aria-hidden="true"></span>
+        <span class="repertoire-glyph" aria-hidden="true">“</span>
+        <blockquote class="repertoire-quote relative z-[1] font-display font-medium m-0 not-italic">
+          <p>Liderança não é sobre falar mais alto; é sobre falar com elegância, clareza e autoridade.</p>
+          <footer class="repertoire-attribution">Amanda Schurnovski</footer>
+        </blockquote>
+        <p class="provenance text-base text-muted mt-10 max-w-[52ch]">Temas da divulgação do workshop “Destravando sua Liderança e Oratória”: posicionamento, presença na fala e escuta ativa.</p>
+      </div>
+    </div>
+  </section>
+  <section class="next-step bg-night text-reverse px-gutter py-16 sm:py-28" aria-labelledby="next-step-titulo">
+    <div class="next-step-inner mx-auto max-w-[54rem] flex flex-col items-center text-center">
+      <h3 id="next-step-titulo" class="text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.02em] max-w-[22ch]">Que momento da sua vida profissional pede mais clareza?</h3>
+      <ContactAction origin="closing" />
+    </div>
+  </section>
+  <section id="contact-info" class="contact-info bg-paper px-gutter py-8 sm:py-12" aria-labelledby="contact-heading">
+    <h2 id="contact-heading" tabindex="-1" class="w-fit text-[1.75rem] leading-[1.2] sm:text-[2rem]">Sobre o próximo passo</h2>
+    <p class="text-lg sm:text-xl max-w-[65ch] my-5">Em uma versão publicada e autorizada, este botão poderá levar ao canal de contato aprovado. Nesta demonstração, nenhum contato é iniciado e nenhum dado é solicitado ou enviado por esta ação.</p>
+    <button type="button" data-contact-return hidden>Voltar à página</button>
+  </section>
+<script>
+  import { initContactInfo } from '../scripts/contact-info';
+  initContactInfo(document, window);
+</script>
+<script>
+  import { initPresenceMotion } from '../scripts/motion';
+  initPresenceMotion();
+  document.querySelectorAll<HTMLImageElement>('.presence img').forEach((image) => {
+    const fail = () => image.parentElement?.classList.add('media-unavailable');
+    image.addEventListener('error', fail, { once: true });
+    if (image.complete && !image.naturalWidth) fail();
+  });
+</script>
+</DemoLayout>

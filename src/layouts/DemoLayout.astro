@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+interface Props { title: string }
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="Conceito demonstrativo FP Solutions para AS Mentorias. Não é o site oficial." />
+    <meta name="referrer" content="no-referrer" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- T05 5b: one-page completa sob migração Tailwind v4; cérebro final integrado (G2 consumido, asset-register §8); QA independente pendente. -->
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="bg-night text-reverse pt-3 sm:pt-4 px-gutter">
+      <p class="text-sm text-reverse-muted leading-normal">Conceito demonstrativo FP Solutions · não é o site oficial da AS.</p>
+      <div class="flex flex-wrap items-start sm:items-center justify-between pt-[1.125rem] sm:pt-6 pb-3 sm:pb-6 gap-1 sm:gap-4">
+        <p class="text-base sm:text-lg"><strong class="block text-lg font-semibold tracking-tight sm:inline">AS Mentorias</strong><span class="block sm:inline max-w-44 sm:max-w-none"> · Amanda Schurnovski</span></p>
+        <nav aria-label="Nesta página" class="flex flex-wrap max-w-full gap-3 sm:gap-7 text-[0.9375rem] sm:text-base"><a class="flex items-center min-h-11 min-w-11" href="#situacoes">Situações</a><a class="flex items-center min-h-11 min-w-11" href="#atuacao">Atuação</a><a class="flex items-center min-h-11 min-w-11" href="#amanda">Amanda</a><a class="flex items-center min-h-11 min-w-11" href="#encontro">Encontro</a><a class="flex items-center min-h-11 min-w-11" href="#temas">Temas</a></nav>
+      </div>
+    </header>
+    <main id="conteudo" tabindex="-1"><slot /></main>
+    <footer class="px-gutter py-8 flex flex-col sm:flex-row gap-3 sm:gap-8 justify-between text-sm text-muted"><p class="max-w-[54ch]">PROTÓTIPO INTERNO · estudo visual provisório.</p><p class="max-w-[54ch]">Conceito FP Solutions baseado em conteúdo publicado pela AS. Sem atendimento ou oferta ativa.</p></footer>
+  </body>
+</html>

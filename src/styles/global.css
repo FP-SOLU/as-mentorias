@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@font-face { font-family: Bricolage; src: url('/fonts/bricolage-display.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Source Sans 3'; src: url('/fonts/source-sans-3-regular.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Source Sans 3'; src: url('/fonts/source-sans-3-semibold.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; }
+
+@theme {
+  --color-night: #070910;
+  --color-paper: #f4efe2;
+  --color-mineral: #e4dcc8;
+  --color-ink: #070910;
+  --color-muted: #50576a;
+  --color-reverse: #f4efe2;
+  --color-reverse-muted: #d5cfbf;
+  --color-gold: #f3d386;
+  --color-gold-hover: #ffe3a4;
+  --color-gold-active: #d8b96f;
+  --color-night-hover: #232c45;
+  --spacing-gutter: clamp(1.25rem, 5vw, 5rem);
+  --font-display: Bricolage, 'Segoe UI', sans-serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --breakpoint-sm: 40rem;
+  --breakpoint-lg: 68.75rem;
+}
+
+@layer base {
+  :root { scrollbar-color: var(--color-night) var(--color-paper); }
+  body { font-family: var(--font-body); color: var(--color-ink); background: var(--color-paper); line-height: 1.5; font-synthesis: none; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; }
+  p, h1, h2, h3, li, button { overflow-wrap: anywhere; }
+  [hidden] { display: none !important; }
+  /* T07b B2: underline explícito em todos os links — preflight Tailwind (a{text-decoration:inherit}) removera o default UA do design original (base.css). Restaura affordance 1.4.1 com offsets do base.css. */
+  a { color: inherit; text-decoration: underline; text-underline-offset: .24em; text-decoration-thickness: 1px; }
+  ::selection { color: var(--color-reverse); background: var(--color-night); }
+  :focus-visible, [tabindex='-1']:focus { outline: 3px solid currentColor; outline-offset: 5px; }
+  button:focus-visible { outline-color: var(--color-night); }
+  main:focus { outline-color: var(--color-reverse); outline-offset: -3px; }
+  button { font: inherit; font-weight: 600; cursor: pointer; border: 0; border-radius: 4px; padding: .95rem 1.25rem; min-height: 3.5rem; color: var(--color-reverse); background: var(--color-night); line-height: 1.3; }
+  button:hover { background: var(--color-night-hover); }
+  button:active { background: var(--color-ink); }
+  @media (prefers-reduced-motion: no-preference) { button { transition: background-color 140ms ease-out, color 140ms ease-out; } }
+}
+
+@layer components {
+  .skip-link { position: absolute; z-index: 10; inset-block-start: .5rem; inset-inline-start: 1rem; padding: .75rem; color: var(--color-ink); background: var(--color-paper); transform: translateY(-200%); }
+  .skip-link:focus { transform: none; }
+  .sculpture::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #070910eb 0%, #070910b3 32%, #07091000 65%, #07091040 100%), linear-gradient(90deg, #07091000 55%, #070910e6 92%); }
+  .sculpture.media-unavailable { visibility: hidden; }
+  @media (min-width: 600px) and (max-width: 1099px) {
+    .sculpture::after { background: linear-gradient(180deg, #070910c9, #07091000 45%, #070910eb 85%); }
+  }
+  @media (max-width: 599px) {
+    .sculpture::after { background: linear-gradient(180deg, #070910d9, #07091000 42%, #07091000 66%, #070910eb 100%); }
+  }
+  @media (max-width: 1099px) {
+    .presence:has(.media-unavailable) .presence-field { padding-top: 0; }
+  }
+  /* M4 — hero presence: regras autorais onde utilities não exprimem o design (double-clamp, grids por breakpoint). */
+  .presence { position: relative; isolation: isolate; overflow: clip; background: var(--color-night); color: var(--color-reverse); padding-top: 1rem; padding-bottom: 2.5rem; padding-inline: var(--spacing-gutter); }
+  @media (min-width: 40rem) { .presence { padding-bottom: 3.5rem; } }
+  .presence h1 { font-size: clamp(2.375rem, 10.7vw, 3.5rem); line-height: 1.055; letter-spacing: -.02em; }
+  @media (min-width: 600px) { .presence h1 { font-size: clamp(3.8rem, 7.35vw, 7.25rem); line-height: 1.01; letter-spacing: -.03em; max-width: 20ch; } }
+  @media (min-width: 600px) and (max-width: 1099px) { .presence h1 { max-width: 18ch; } }
+  .presence-field { position: relative; z-index: 1; display: block; padding-top: 216px; margin-top: 1.5rem; }
+  @media (min-width: 600px) and (max-width: 1099px) { .presence-field { display: grid; grid-template-columns: 270px 1fr; column-gap: 3rem; padding-top: 305px; min-height: 0; margin-top: 0; } }
+  @media (min-width: 1100px) { .presence-field { display: grid; grid-template-columns: minmax(240px, 300px) minmax(300px, 470px) minmax(280px, 1fr); min-height: 352.5px; gap: 2rem; align-items: end; margin-top: 2.5rem; padding-top: 0; } }
+  .sculpture { position: absolute; z-index: 0; pointer-events: none; width: 120%; left: -10%; top: 125px; }
+  @media (min-width: 600px) { .sculpture { width: min(1100px, 100%); left: max(0px, calc((100% - 1100px) / 2)); top: 125px; } }
+  @media (min-width: 1100px) { .sculpture { top: 0; } }
+  .presence-action { max-width: none; }
+  @media (min-width: 600px) and (max-width: 1099px) {
+    .presence-action { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; }
+    .presence-action > p { grid-row: 1 / 3; }
+    .presence-action .contact-action { margin-top: 0; }
+    .presence-action .text-link { grid-column: 2; margin: 0; align-self: start; }
+  }
+  @media (min-width: 1100px) { .presence-action { grid-column: 3; max-width: 26rem; padding-bottom: .2rem; } }
+  .contact-action { margin-top: 1.25rem; }
+  @media (min-width: 600px) { .contact-action { margin-top: 1.5rem; } }
+  .contact-notice { font-size: .9375rem; margin-bottom: .625rem; }
+  .contact-action button { width: 100%; font-size: 1.0625rem; }
+  .presence button { background: var(--color-gold); color: var(--color-night); }
+  .presence button:hover { background: var(--color-gold-hover); }
+  .presence button:active { background: var(--color-gold-active); }
+  .presence button:focus-visible { outline-color: var(--color-reverse); }
+  .presence .text-link { margin-top: .625rem; }
+  @media (min-width: 600px) { .presence .text-link { margin-top: .5rem; } }
+  /* M5 — situations: non-utility authorial rules byte-for-byte from presence.css (open-space seam + ladder). */
+  .open-space { height: 3.5rem; display: flex; justify-content: center; gap: 1rem; margin: 3rem 0 1rem; }
+  .open-space span { width: 1px; height: 100%; background: var(--color-night); transform: rotate(24deg); }
+  @media (max-width: 599px) {
+    .open-space { margin-block: 1.75rem 1rem; height: 2.25rem; justify-content: flex-start; padding-left: 1rem; }
+  }
+  .situations-lines { list-style: none; padding: 0; margin: 0 auto; width: fit-content; font: 600 clamp(2rem, 3.7vw, 3.5rem)/1.18 Bricolage, 'Segoe UI', sans-serif; letter-spacing: -.025em; }
+  .situations-lines li { padding-block: .6rem; }
+  .situations-lines li:nth-child(2) { transform: translateX(2rem); }
+  .situations-lines li:nth-child(3) { transform: translateX(4rem); color: var(--color-night); }
+  @media (max-width: 599px) {
+    .situations-lines { font-size: 1.875rem; line-height: 1.2; }
+    .situations-lines li { padding-block: .625rem; }
+    .situations-lines li:nth-child(2) { transform: translateX(0.5rem); }
+    .situations-lines li:nth-child(3) { transform: translateX(1rem); }
+  }
+  /* M6 — practice/contact-info: reset de largura do botão (next-step virou seção própria; ver REF-DESIGN abaixo). */
+  .contact-info button { width: auto; }
+  /* REF-DESIGN — next-step: reprise escura centrada (pergunta display + CTA gold ampliado). */
+  .next-step h3 { margin-inline: auto; }
+  .next-step .contact-action { margin: 2rem 0 0; width: 100%; max-width: 26rem; }
+  .next-step .contact-action button {
+    min-height: 64px;
+    font-size: 1.25rem;
+    padding-block: 1rem;
+    border-radius: 8px;
+    background: var(--color-gold);
+    color: var(--color-night);
+  }
+  .next-step .contact-action button:hover { background: var(--color-gold-hover); }
+  .next-step .contact-action button:active { background: var(--color-gold-active); }
+  .next-step .contact-action button:focus-visible { outline-color: var(--color-reverse); }
+  @media (prefers-reduced-motion: no-preference) {
+    .next-step .contact-action button { transition: background-color 140ms ease-out, transform 140ms ease-out; }
+    .next-step .contact-action button:hover { transform: translateY(-1px); }
+    .next-step .contact-action button:active { transform: none; }
+  }
+  /* REF-WOW — about: display editorial acima do retrato (rosto 100% visível, sem overlap), coluna preenchida por hierarquia. */
+  .about-name { font-size: clamp(2.5rem, 5.4vw, 4.5rem); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 1.25rem; }
+  @media (min-width: 640px) { .about-name { margin-block-end: 1.75rem; } .about-name + .about-grid { position: relative; } }
+  .about-copy { display: flex; flex-direction: column; }
+  .about-badges { margin: auto 0 0; padding: 0; list-style: none; display: grid; }
+  .about-badges li { padding-block: .875rem; font-size: .8125rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; border-block-start: 1px solid var(--color-muted); }
+  @media (min-width: 640px) {
+    .about-badges { grid-template-columns: 1fr 1fr; }
+    .about-badges li { padding-inline-end: 1.25rem; }
+    .about-badges li:nth-child(even) { border-inline-start: 1px solid var(--color-muted); padding-inline-start: 1.25rem; }
+  }
+  /* REF-WOW — repertoire: peça de editorial premiada (não dashboard). Funde (a) escala da citação, (b) aspas display gigantes em camada, (c) assinatura gold 2px no eyebrow. */
+  .repertoire-card {
+    --glyph: clamp(5.5rem, 11vw, 8rem);
+    position: relative;
+    overflow: clip;
+    box-shadow: 0 24px 48px -36px rgba(7, 9, 16, .35);
+  }
+  .repertoire-heading {
+    font-size: 1.25rem;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+  .repertoire-rule {
+    display: block;
+    width: 3rem;
+    height: 2px;
+    margin-block-start: 1.125rem;
+    background: var(--color-gold);
+  }
+  .repertoire-glyph {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--glyph);
+    line-height: .8;
+    color: var(--color-gold);
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+  }
+  .repertoire-quote {
+    margin-block-start: calc(var(--glyph) * -.56);
+    font-size: clamp(2rem, 1.1rem + 2.4vw, 3.25rem);
+    line-height: 1.14;
+    letter-spacing: -.015em;
+    max-width: 30ch;
+    color: var(--color-ink);
+  }
+  .repertoire-attribution {
+    font-family: var(--font-body);
+    font-size: .875rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-block-start: 1.5rem;
+    display: inline-block;
+  }
+}

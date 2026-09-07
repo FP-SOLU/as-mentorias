@@ -1,0 +1,9 @@
+---
+interface Props { origin: 'hero' | 'closing' }
+const { origin } = Astro.props;
+---
+<div class="contact-action">
+  <p class="contact-notice" id={`notice-${origin}`}>Nesta demo, o contato não está ativo.</p>
+  <button type="button" id={`contact-${origin}`} data-contact-open aria-controls="contact-info" aria-describedby={`notice-${origin}`} aria-expanded="false" hidden>Conversar sobre meu momento</button>
+  <noscript><a class="text-link" href="#contact-heading">Sobre o próximo passo</a></noscript>
+</div>

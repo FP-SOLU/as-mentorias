@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+*.log
+
+# Evidências locais pesadas (não são artefato de release)
+.playwright-mcp/
+# Estado local do agente
+.DS_Store
+Thumbs.db

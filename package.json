@@ -1,0 +1,32 @@
+{
+  "name": "as-mentorias-concept",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.7.0",
+  "engines": {
+    "node": ">=24.9.0 <25",
+    "npm": ">=11.7.0 <12"
+  },
+  "scripts": {
+    "dev": "node scripts/astro.mjs dev --host 127.0.0.1 --port 4321",
+    "preview": "node scripts/astro.mjs preview --host 127.0.0.1 --port 4321",
+    "typecheck": "node scripts/astro.mjs check",
+    "lint": "eslint . --max-warnings 0",
+    "build": "node scripts/astro.mjs build",
+    "test:unit": "node --test tests/unit/*.test.mjs",
+    "test:integration": "npm run build && node --test tests/integration/*.test.mjs",
+    "test": "npm run test:unit && npm run test:integration"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@eslint/js": "10.0.1",
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "7.3.1",
+    "eslint": "10.10.0",
+    "eslint-plugin-astro": "1.7.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.69.0"
+  }
+}
