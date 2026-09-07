@@ -1,6 +1,6 @@
 # AS Mentorias — handoff completo para nova sessão
 
-**Estado:** demo local em desenvolvimento controlado. Product e Architecture aprovados; T01–T03 executados; **G1 APPROVED (2026-09-06)** pelo operador, incluindo a edição manual dele no `.situations-lines` (efeito de escada via transform; grupo centralizado) — preservar. Diretiva nova do operador: **Tailwind CSS no lugar do CSS autoral** — mudança arquitetural material: Tech Architect emenda plan/tasks e o operador aprova antes de implementar. G2 (asset cerebral final) permanece obrigatório antes de T04.
+**Estado (2026-09-07 — sessão de construção + deploy):** T01–T08 concluídos + 4 rodadas de refino do operador (REF-DESIGN, REF-WOW) + enriquecimento §2.3b + motion amplificado. **Gates:** Product/G0/G1/G2 APPROVED; G3 (decisão final) pendente de T09. **Deploy:** Git local (main @31097b6, 6 commits) + remoto `FP-SOLU/as-mentorias` (push OK); **GitHub Pages 404 — pendente ação do operador** (Settings → Pages → Source = "GitHub Actions"; e/ou visibilidade pública se plano free). **T09 QA independente** foi despachado mas a sessão terminou antes do relatório — **rodar T09 na próxima sessão** (entradas: 12 evidências + gate-log; saída qa-report.md; NÃO corrige código). Preview local: `npm run preview` (127.0.0.1:4321, raiz). KB institucional: hub `projects/as-mentoria-concept` + patterns de migração Tailwind e runs-flaky + ERR-049 (token MCP GitHub).
 
 ## 1. Como retomar
 
