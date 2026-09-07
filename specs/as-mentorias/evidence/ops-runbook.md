@@ -1,7 +1,7 @@
 # Runbook — Build & Preview Local (AS Mentorias concept)
 
 **Owner:** @devops-specialist | **Frequency:** As needed (entrega local apenas)
-**Last Updated:** 2026-09-06 | **Last Run:** 2026-09-06 18:37 (dry-run T08, PASS)
+**Last Updated:** 2026-09-07 (D1b) | **Last Run:** 2026-09-06 18:37 (dry-run T08, PASS)
 
 ## 1. Propósito
 Preparação operacional **exclusivamente local** do site estático Astro (demo privada). Cobre build, preview em loopback, health checks mínimos de entrega e parada. **Não é QA** — T09 (qa-report) permanece pendente de revisão do operador.
@@ -71,11 +71,11 @@ Confirmar no conteúdo:
 
 ## 10. Apêndice — Deploy GitHub Pages (D1a, autorizado pelo operador)
 
-**Destino:** Pages do repo `Kamilyszg/as-mentorias` (público — exigência do plano free). URL final: **https://kamilyszg.github.io/as-mentorias/**
+**Destino:** Pages da org `FP-SOLU` (repo `FP-SOLU/as-mentorias`). URL final: **https://fpsolu.github.io/as-mentorias/** (Pages de org/usuário = host `fpsolu.github.io` + path do repo).
 
 **O que o workflow (`.github/workflows/deploy-pages.yml`) faz:**
 1. Trigger: push em `main` ou `workflow_dispatch`.
-2. Build com env `DEPLOY_SITE=https://kamilyszg.github.io` e `DEPLOY_BASE=/as-mentorias` — `astro.config.mjs` só aplica `site`/`base` quando essas vars existem.
+2. Build com env `DEPLOY_SITE=https://fpsolu.github.io` e `DEPLOY_BASE=/as-mentorias` — `astro.config.mjs` só aplica `site`/`base` quando essas vars existem.
 3. `actions/configure-pages@v5` com `enablement: true` (ativa o Pages no repo sem ação manual na UI).
 4. Upload de `dist/` como artifact Pages + `actions/deploy-pages@v4`.
 
@@ -85,4 +85,6 @@ Confirmar no conteúdo:
 
 **Nota fonts:** `public/fonts/` → `src/fonts/` + CSS relativo (`url('../fonts/...')`) porque assets de `public/` com URL absoluta **não** recebem o prefixo `base` no Pages (quirk conhecido Astro).
 
-**Status D1a:** repo remoto **não criado** — token MCP GitHub sem escopo para `POST /user/repos` (403). Workflow escrito com owner `kamilyszg` (conta confirmada pelo operador), a confirmar quando o repo existir.
+**Status D1a:** repo remoto criado pelo operador em `FP-SOLU/as-mentorias` (vazio; ls-remote OK). Workflow corrigido em D1b (owner kamilyszg → fpsolu).
+
+**Status D1b (2026-09-07):** commit `07d3e18` "Deploy: workflow Pages apontando para FP-SOLU" pushado — `origin/main` = `07d3e18` (ls-remote confirmado). MCP GitHub: `GET /repos/FP-SOLU/as-mentorias/actions/runs` → **404** (repo privado ao token; estado do run não observável por agente). Polling público `https://fpsolu.github.io/as-mentorias/` a cada 30s, T1–T12 (00:10:34→00:16:04) + sonda final 00:18: **404 em todas**. Entrega NÃO verificada. Diagnósticos prováveis: (i) workflow falhou (permissão Pages/admin do GITHUB_TOKEN na org), (ii) repo **privado em plano free** — Pages exige público ou Pro, (iii) Pages source ainda não habilitado. **Próximo passo (operador, 1 clique):** confirmar visibilidade pública do repo (Settings→General→Change visibility) e/ou Actions→"Deploy to GitHub Pages" para ver status do run; se privado for intencional, Pages free não serve — decidir Pro ou repo público.

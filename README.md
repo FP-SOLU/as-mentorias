@@ -23,7 +23,7 @@ npm test           # unit + integration
 
 `.github/workflows/deploy-pages.yml` publica `dist/` no Pages a cada push em `main`
 (ou `workflow_dispatch`). O build usa `DEPLOY_BASE=/as-mentorias` e
-`DEPLOY_SITE=https://kamilyszg.github.io` via env — o preview local continua na raiz.
+`DEPLOY_SITE=https://fpsolu.github.io` via env — o preview local continua na raiz.
 
 ## Privacidade
 
